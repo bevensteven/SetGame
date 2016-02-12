@@ -2,6 +2,7 @@ import sys
 import os 
 # use combinations function to perform 'n_cards choose 3 cards' with cards 
 from itertools import combinations
+import disjoints
 
 class FindSet(object):
 
@@ -81,6 +82,9 @@ class FindSet(object):
 				self.sets.append(combination)
 		print("Number of sets found: ", self.n_sets)
 		return self.sets 
+
+	def find_disjoints(self):
+
 
 	def get_results(self):
 		return [self.n_sets, self.n_disjoints, self.sets]
