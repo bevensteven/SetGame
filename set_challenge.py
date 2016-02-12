@@ -5,13 +5,13 @@ from itertools import combinations
 
 class FindSet(object):
 
-	
-
 	def __init__(self, n, deck):
 		self.n = n
 		self.cards = FindSet.transform_deck(deck)
 		self.n_sets = 0
+		self.n_disjoints = 0
 		self.sets = list()
+		self.disjoints = list()
 
 	@staticmethod
 	def transform_deck(cards):
@@ -21,7 +21,8 @@ class FindSet(object):
 		'''
 		card_tuples = list()
 
-		def get_symbol_type(symbol):
+		def get_sym_type(symbols):
+			symbol = symbols[0]
 			a = ['A', 'a', '@']				# id as 0
 			s = ['S', 's', '$']				# id as 1
 			h = ['H', 'h', '#']				# id as 2
@@ -30,7 +31,8 @@ class FindSet(object):
 				if symbol in _type:
 					return i
 
-		def get_case(character):
+		def get_case(symbols):
+			character = symbols[0]
 			if not character.isalpha():				# return 0 if symbol case
 				return 0					
 			elif character.islower():				# return 1 if lower case
@@ -41,12 +43,16 @@ class FindSet(object):
 				raise Exception('Undefined case')
 
 		for card in cards:
-			attributes = card.split(' ')
-			color = attributes[0]
-			symbol = get_symbol_type(attributes[1][0])
-			num_symbols = len(attributes[1])
-			case = get_case(symbol)
-			card_tuples.append(tuple([color, symbol, num_symbols, case]))
+			# each card is represented as a string "<color> <symbols>"
+			print(card.split(' '))
+			color, symbols, useless = card.split(' ')
+
+			sym = get_sym_type(symbols)
+			num_syms = len(symbols)
+			case_sym = get_case(symbols)
+
+			card_tuples.append( (color, sym, num_syms, case_sym) )
+
 
 		return card_tuples
 
@@ -76,56 +82,5 @@ class FindSet(object):
 		print("Number of sets found: ", self.n_sets)
 		return self.sets 
 
-
-
-
-
-
-
-# print('n arguments', len(sys.argv))
-# print(str(sys.argv))
-
-args = sys.argv[1:]
-# print(args)
-# assert(len(args) == 1, "please give an input file as argument")
-
-f_name = args[0]
-f = open(f_name, 'r')
-
-input_array = list()
-# assume input valid 
-for line in f:
-	input_array.append(line)
-
-# print(input_array)
-N = int(input_array[0])
-assert(type(N) == int)
-cards = input_array[1:]
-# print(N, cards)
-transformed_cards = FindSet.transform_deck(cards)
-a = transformed_cards[0]
-b = transformed_cards[1]
-c = transformed_cards[2]
-
-# for i, tup in enumerate(transformed_cards):
-# 	print(i, tup)
-
-assert(FindSet.compare_cards(a, b, transformed_cards[3]))
-assert(not FindSet.compare_cards(a, b, c))
-
-fs = FindSet(N, cards)
-sets = fs.find_sets()
-
-f_out_name = 'output/' + '_out'
-f_out = open(f_out_name, 'w')
-
-for _set in sets:
-	a, b, c = _set 
-	a = str(a)
-	b = str(b)
-	c = str(c)
-
-	f_out.write("\n{0}\n {1}\n {2}\n".format(a, b, c))
-
-f.close()
-f_out.close()
+	def get_results(self):
+		return [self.n_sets, self.n_disjoints, self.sets]
