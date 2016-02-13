@@ -1,0 +1,18 @@
+Steven Truong
+struong@berkeley.edu
+
+The set_challenge.py file holds the main class that computes our desired output and it depends on utils.py.
+
+A brief test function is used in test_set.py and requires:
+input/1
+input/2
+input/3
+input/4
+
+Otherwise, comment out lines 10-37. 
+
+test_set.py is ran with an input file in the format of the input in the instructions and writes to an output file 'output/_out' in the format specified in the instructions. I've also assumed per the instructions that inputs will be given in a valid form.
+
+# python test_set.py <input_file>
+
+output file after running the command above = output/_out

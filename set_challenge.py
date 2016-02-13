@@ -6,7 +6,12 @@ from utils import *
 
 
 class FindSet(object):
-	
+	'''
+	Takes in as input:
+	- N = number of cards 
+	- deck = a list of the input card strings, i.e. ['blue # \n', 'green $ \n', 'yellow @ \n']
+	and displays results in format of output given by instructions.
+	'''
 	def __init__(self, n, deck):
 		self.n = n
 		self.cards = transform_deck(deck)
@@ -68,11 +73,16 @@ class FindSet(object):
 		self.disjoints.update(dict_update)							# update the dictionary with our new disjoint sets 
 
 	def set_largest_disjoint(self):
-		key_func = lambda x: len(self.disjoints[x])					# returns the length of a list as a heuristic 
-		max_index = max(self.disjoints, key=key_func)				# figure out where the largest disjoint set is using the key function
-		dset = self.disjoints[max_index]							# get the set of cards of the largest disjoint set 
-		triplets = transform_list_to_triplet(dset)					# transform the set of cards back to a "set of sets" - using the fact that things should be in order in a list
-		self.largest_disjoint = triplets
+		try:
+			key_func = lambda x: len(self.disjoints[x])					# returns the length of a list as a heuristic 
+			max_index = max(self.disjoints, key=key_func)				# figure out where the largest disjoint set is using the key function
+			dset = self.disjoints[max_index]							# get the set of cards of the largest disjoint set 
+			triplets = transform_list_to_triplet(dset)					# transform the set of cards back to a "set of sets" - using the fact that things should be in order in a list
+			self.largest_disjoint = triplets
+		except ValueError:
+			# self.disjoints is empty
+			return
+
 
 	def get_all_sets(self):
 		return self.sets

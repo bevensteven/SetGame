@@ -7,6 +7,48 @@ from utils import *
 
 pp = pprint.PrettyPrinter(indent=4)
 
+def run_tests():
+	print('RUNNING TEST')
+	print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+	answers = {1: (9,4),
+				2: (41, 8),
+				3: (1, 1),
+				4: (0, 0)}
+
+	def check_instance(i, instance):
+		try:
+			assert(answers[i] == (instance.n_sets, instance.n_largest_disjoint))
+		except AssertionError:
+			print('assertion!')
+			print((instance.n_sets, instance.n_disjoints))
+			print(i)
+
+	for i in answers:
+		print(' ')
+		print('##############')
+		print('Case {0}'.format(i))
+
+		file_name = 'input/{0}'.format(i)
+		f = open(file_name, 'r')
+		_input = list() 
+		for line in f:
+			_input.append(line)
+		N = int(_input[0])
+		cards = _input[1:]
+
+		fs = FindSet(N, cards)
+		check_instance(i, fs)
+
+		print('##############')
+
+	print('END TEST')
+	print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+	print(' ')
+
+
+run_tests()
+
+# fetch input file from console argument 'python test_set.py <input>'
 args = argv[1:]
 
 f_name = args[0]
