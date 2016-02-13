@@ -13,7 +13,8 @@ def run_tests():
 	answers = {1: (9,4),
 				2: (41, 8),
 				3: (1, 1),
-				4: (0, 0)}
+				4: (0, 0),
+				5: (10, 1)}
 
 	def check_instance(i, instance):
 		try:
