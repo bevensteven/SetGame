@@ -1,36 +1,34 @@
+41
+8
 
-('blue', 2, 1, 0)
-('green', 1, 1, 0)
-('yellow', 0, 1, 0)
+blue hhh
+yellow $
+green AA
 
-('blue', 2, 1, 0)
-('blue', 0, 2, 2)
-('blue', 1, 3, 1)
+yellow @
+blue AA
+green aaa
 
-('blue', 0, 2, 2)
-('blue', 0, 3, 0)
-('blue', 0, 1, 1)
+green ##
+green SS
+green aa
 
-('blue', 0, 2, 2)
-('yellow', 0, 3, 0)
-('green', 0, 1, 1)
+yellow ###
+green S
+blue aa
 
-('yellow', 0, 1, 0)
-('green', 0, 1, 2)
-('blue', 0, 1, 1)
+green SSS
+blue H
+yellow AA
 
-('yellow', 0, 1, 0)
-('yellow', 0, 3, 0)
-('yellow', 0, 2, 0)
+blue ###
+green A
+yellow ss
 
-('blue', 0, 3, 0)
-('yellow', 0, 2, 0)
-('green', 0, 1, 0)
+yellow s
+blue ss
+green sss
 
-('green', 0, 1, 2)
-('green', 0, 1, 1)
-('green', 0, 1, 0)
-
-('yellow', 1, 3, 0)
-('yellow', 2, 1, 0)
-('yellow', 0, 2, 0)
+green ###
+green HH
+green h

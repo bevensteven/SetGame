@@ -40,8 +40,8 @@ class FindSet(object):
 				self.n_sets += 1
 				self.sets.append(combination)
 				self.add_disjoints(combination)
-				print(self.disjoints)
-				print(' ')
+				# print(self.disjoints)
+				# print(' ')
 		print("Number of sets found: ", self.n_sets)
 		return self.sets 
 
@@ -53,6 +53,7 @@ class FindSet(object):
 			if a not in curr_set and b not in curr_set and c not in curr_set:
 				self.n_disjoints += 1
 				dict_update[self.n_disjoints] = curr_set + [a, b, c]
+				print(dict_update[self.n_disjoints])
 		self.n_disjoints += 1
 		dict_update[self.n_disjoints] = [a, b, c]
 		self.disjoints.update(dict_update)
@@ -67,16 +68,11 @@ class FindSet(object):
 	def transform_list_to_triplet(self, arr):
 		assert(len(arr) % 3 == 0)
 		triplets = []
-		for i in range(len(arr)/3):
+		for i in range(0, len(arr), 3):
 			triplet = (arr[i], arr[i+1], arr[i+2])
 			# assert(triplet in self.sets)
 			triplets.append(triplet)
 		return triplets
-
-
-
-
-
 
 	def get_results(self):
 		return [self.n_sets, self.n_disjoints, self.sets]

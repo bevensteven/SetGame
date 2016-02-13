@@ -3,14 +3,14 @@ sym_map = {0: ['@', 'a', 'A'],
 			2: ['#', 'h', 'H']}
 
 def transform_tuple_to_original(tup):
-		'''
-		format of tup is (<color>, <symbol>, <number of symbols>, <symbol case>)
-		format of original is "<color> <symbols>"
-		'''
-		color, sym, num_syms, case_sym = tup
-		symbols = sym_map[sym][case_sym] * num_syms
-		original = "{0} {1}".format(color, symbols)
-		return original
+	'''
+	format of tup is (<color>, <symbol>, <number of symbols>, <symbol case>)
+	format of original is "<color> <symbols>"
+	'''
+	color, sym, num_syms, case_sym = tup
+	symbols = sym_map[sym][case_sym] * num_syms
+	original = "{0} {1}".format(color, symbols)
+	return original
 
 def transform_original_to_tuple(org):
 	'''
@@ -33,12 +33,8 @@ def transform_original_to_tuple(org):
 	return (color, sym, num_syms, case_sym)
 
 def transform_deck(cards):
-
 	card_tuples = list()
-
 	for card in cards:
-		# each card is represented as a string "<color> <symbols>"
-		# print(card.split(' '))
 		card_tuples.append(transform_original_to_tuple(card))
 
 	return card_tuples
