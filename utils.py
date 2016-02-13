@@ -1,3 +1,8 @@
+'''
+This file contains all utility functions we use to manipulate our data for ease of use.
+'''
+
+''' Constructed a symbol map for easy translation. '''
 sym_map = {0: ['@', 'a', 'A'],
 			1: ['$', 's', 'S'],
 			2: ['#', 'h', 'H']}
@@ -38,3 +43,14 @@ def transform_deck(cards):
 		card_tuples.append(transform_original_to_tuple(card))
 
 	return card_tuples
+
+def transform_list_to_triplet(arr):
+	'''
+	Given an array of cards, we've assumed that the cards are still in order according to the properties of lists. Now we can convert each group of three cards back into its original set found earlier. 
+	'''
+	assert(len(arr) % 3 == 0)						# we know that any disjoint set should be a multiple of 3 as each set contains 3 cards
+	triplets = []
+	for i in range(0, len(arr), 3):
+		triplet = (arr[i], arr[i+1], arr[i+2])
+		triplets.append(triplet)
+	return triplets

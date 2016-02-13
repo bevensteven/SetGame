@@ -39,7 +39,7 @@ c = transformed_cards[2]
 # assert(not FindSet.compare_cards(a, b, c))
 
 fs = FindSet(N, cards)
-sets = fs.find_sets()
+# sets = fs.find_sets()
 
 f_out_name = 'output/' + '_out'
 f_out = open(f_out_name, 'w')
@@ -52,19 +52,21 @@ f_out = open(f_out_name, 'w')
 
 # 	f_out.write("{0}\n{1}\n{2}\n\n".format(a, b, c))
 
-for s in fs.disjoints.values():
-	assert(len(s)%3 == 0)
+# for s in fs.disjoints.values():
+# 	assert(len(s)%3 == 0)
 
 
-largest_disjoint = fs.get_largest_disjoint()
-pp.pprint(largest_disjoint)
-print(len(largest_disjoint))
-valid_sets = [s in fs.sets for s in largest_disjoint]
+# largest_disjoint = fs.get_largest_disjoint()
+# pp.pprint(largest_disjoint)
+# print(len(largest_disjoint))
+# valid_sets = [s in fs.sets for s in largest_disjoint]
+
+n_sets, n_disjoints, largest_disjoint = fs.get_results()
 
 for s in largest_disjoint:
 	assert(s in fs.sets)
-	
-f_out.write("{0}\n{1}".format(fs.n_sets, len(largest_disjoint)))
+
+f_out.write("{0}\n{1}".format(n_sets, n_disjoints))
 for _set in largest_disjoint:
 	a, b, c = _set 
 	a = str(transform_tuple_to_original(a))
